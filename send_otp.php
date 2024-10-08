@@ -1,10 +1,9 @@
 <?php
-require 'vendor/autoload.php'; // Include Composer's autoloader (if using Composer)
+require 'vendor/autoload.php';
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
 
-// Database connection (Update with your database details)
 include 'dbh.inc.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -12,7 +11,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $user_found = false;
     $user_type = '';
 
-    // Check if email exists in the student table
     $stmt_student = $pdo->prepare("SELECT * FROM student WHERE email = :email");
     $stmt_student->execute(['email' => $email]);
     $result_student = $stmt_student->fetch(PDO::FETCH_ASSOC);
@@ -22,7 +20,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $user_type = 'student';
     }
 
-    // Check if email exists in the admin table
     $stmt_staff = $pdo->prepare("SELECT * FROM admin WHERE email = :email");
     $stmt_staff->execute(['email' => $email]);
     $result_staff = $stmt_staff->fetch(PDO::FETCH_ASSOC);
@@ -33,11 +30,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     if ($user_found) {
-        // Email exists, generate an OTP
-        $otp = rand(100000, 999999); // Generate a 6-digit OTP
+        $otp = rand(100000, 999999); 
         $otp_expiry = gmdate("Y-m-d H:i:s", strtotime('+10 minutes'));
 
-        // Save OTP and expiry in the corresponding table
         if ($user_type == 'student') {
             $update_stmt = $pdo->prepare("UPDATE student SET otp = :otp, otp_expiry = :otp_expiry WHERE email = :email");
         } else {
@@ -50,7 +45,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             'email' => $email
         ]);
 
-        // Send OTP via email (You might need to configure this to suit your environment)
         $mail = new PHPMailer(true);
         try {
             //Server settings

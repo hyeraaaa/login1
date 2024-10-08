@@ -1,5 +1,4 @@
 <?php
-// Database connection (Update with your database details)
 include 'dbh.inc.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -8,7 +7,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $user_found = false;
     $user_type = '';
 
-    // Check OTP in the student table
     $stmt_student = $pdo->prepare("SELECT * FROM student WHERE email = :email AND otp = :otp AND otp_expiry > CURRENT_TIMESTAMP AT TIME ZONE 'UTC'");
     $stmt_student->execute(['email' => $email, 'otp' => $otp]);
     $result_student = $stmt_student->fetch(PDO::FETCH_ASSOC);
@@ -18,7 +16,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $user_type = 'student';
     }
 
-    // Check OTP in the admin table
     $stmt_staff = $pdo->prepare("SELECT * FROM admin WHERE email = :email AND otp = :otp AND otp_expiry > NOW()");
     $stmt_staff->execute(['email' => $email, 'otp' => $otp]);
     $result_staff = $stmt_staff->fetch(PDO::FETCH_ASSOC);
@@ -29,7 +26,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     if ($user_found) {
-        // OTP is valid, redirect to the password reset form
         header("Location: resetpassword.php?email=$email&type=$user_type");
     } else {
         echo "Invalid or expired OTP.";

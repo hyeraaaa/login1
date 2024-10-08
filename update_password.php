@@ -1,13 +1,11 @@
 <?php
-// Database connection (Update with your database details)
 include 'dbh.inc.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST['email'];
-    $password = password_hash($_POST['password'], PASSWORD_BCRYPT); // Hash the new password
+    $password = password_hash($_POST['password'], PASSWORD_BCRYPT); 
     $type = $_POST['type'];
 
-    // Update password in the appropriate table
     if ($type == 'student') {
         $stmt = $pdo->prepare("UPDATE student SET password = :password, otp = NULL, otp_expiry = NULL WHERE email = :email");
     } else {

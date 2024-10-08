@@ -64,39 +64,36 @@ a {
 }
 
 /*For password reset*/
-/* The Modal (background) */
 .modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
+    display: none; 
+    position: fixed; 
+    z-index: 1;
     left: 0;
     top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    background-color: rgba(0, 0, 0, 0.5); /* Black background with opacity */
+    width: 100%; 
+    height: 100%; 
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
-/* Modal Content Box */
 .modal-content {
     background-color: #fff;
-    margin: 15% auto; /* Center the modal */
+    margin: 15% auto; 
     padding: 20px;
     border: 1px solid #888;
-    width: 80%; /* Adjust the width */
+    width: 80%; 
     max-width: 400px;
     border-radius: 8px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    position: relative; /* Relative positioning for absolute positioning of the close button */
+    position: relative; 
 }
 
-/* Close Button */
 .close {
     color: #aaa;
     font-size: 28px;
     font-weight: bold;
-    position: absolute; /* Positioning it absolutely */
-    top: 10px; /* Adjust top position */
-    right: 20px; /* Adjust right position */
+    position: absolute; 
+    top: 10px; 
+    right: 20px; 
 }
 
 .close:hover,
