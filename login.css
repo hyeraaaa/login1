@@ -1,0 +1,135 @@
+* {
+    font-family: poppins;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+}
+
+.main_bg {
+    height: 100vh;
+    background-image: url(pics/main-bg.png);
+    background-position: center -180px;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+}
+
+.header_container {
+    flex-shrink: 0;
+}
+
+.login_container {
+    flex-grow: 1;
+}
+
+.footer {
+    flex-shrink: 0;
+}
+
+.form-container {
+    border-radius: 25px !important;
+}
+
+.header_container img {
+    max-height: 150px;
+}
+
+.form-body input {
+    border-radius: 20px !important;
+}
+
+.btn {
+    border-radius: 15px !important;
+}
+
+a {
+    text-decoration: none;
+    color: red;
+}
+
+.BSU {
+    font-size: 35px;
+}
+
+.description, .copyright {
+    font-size: 20px;
+}
+
+.red_spartan {
+    max-height: 187px;
+}
+
+/*For password reset*/
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    background-color: rgba(0, 0, 0, 0.5); /* Black background with opacity */
+}
+
+/* Modal Content Box */
+.modal-content {
+    background-color: #fff;
+    margin: 15% auto; /* Center the modal */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Adjust the width */
+    max-width: 400px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    position: relative; /* Relative positioning for absolute positioning of the close button */
+}
+
+/* Close Button */
+.close {
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute; /* Positioning it absolutely */
+    top: 10px; /* Adjust top position */
+    right: 20px; /* Adjust right position */
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+  
+
+@media (max-width: 768px) {
+    .BSU {
+        font-size: 1.5rem;
+    }
+    .description {
+        font-size: 1.2rem;
+    }
+    .copyright {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .BSU {
+        font-size: 1.2rem;
+    }
+    .description {
+        font-size: 0.8rem;
+    }
+    .copyright {
+        font-size: 0.8rem;
+    }
+}
+
+
